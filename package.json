@@ -1,9 +1,9 @@
 {
-  "name": "html-webpack-plugin",
-  "version": "4.5.2",
+  "name": "igem-wiki-webpack-plugin",
+  "version": "1.0.0",
   "license": "MIT",
-  "description": "Simplifies creation of HTML files to serve your webpack bundles",
-  "author": "Jan Nicklas <j.nicklas@me.com> (https://github.com/jantimon)",
+  "description": "An iGem wiki tool (based on html-webpack-plugin)",
+  "author": "ZhiXingHeYi-0712 <Lihao.0712@outlook.com> (https://github.com/ZhiXingHeYi-0712)",
   "main": "index.js",
   "types": "typings.d.ts",
   "files": [
@@ -69,9 +69,7 @@
     "html",
     "html-webpack-plugin"
   ],
-  "bugs": "https://github.com/jantimon/html-webpack-plugin/issues",
-  "homepage": "https://github.com/jantimon/html-webpack-plugin",
-  "repository": "https://github.com/jantimon/html-webpack-plugin.git",
+  "repository": "https://github.com/BNUZ-China/iGem-wiki-webpack-plugin.git",
   "engines": {
     "node": ">=6.9"
   },
