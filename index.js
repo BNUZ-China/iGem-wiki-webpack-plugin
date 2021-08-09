@@ -60,7 +60,9 @@ class HtmlWebpackPlugin {
       meta: {},
       base: false,
       title: 'Webpack App',
-      xhtml: false
+      xhtml: false,
+
+      tagDefinitionPreprocessor: undefined
     };
 
     /** @type {ProcessedHtmlWebpackOptions} */
@@ -865,10 +867,11 @@ class HtmlWebpackPlugin {
    */
   prepareAssetTagGroupForRendering (assetTagGroup) {
     const xhtml = this.options.xhtml;
+    const tagDefPreprocessor = this.options.tagDefinitionPreprocessor;
     return HtmlTagArray.from(assetTagGroup.map((assetTag) => {
       const copiedAssetTag = Object.assign({}, assetTag);
       copiedAssetTag.toString = function () {
-        return htmlTagObjectToString(this, xhtml);
+        return htmlTagObjectToString(this, xhtml, tagDefPreprocessor);
       };
       return copiedAssetTag;
     }));
@@ -892,8 +895,8 @@ class HtmlWebpackPlugin {
     const htmlRegExp = /(<html[^>]*>)/i;
     const headRegExp = /(<\/head\s*>)/i;
     const bodyRegExp = /(<\/body\s*>)/i;
-    const body = assetTags.bodyTags.map((assetTagObject) => htmlTagObjectToString(assetTagObject, this.options.xhtml));
-    const head = assetTags.headTags.map((assetTagObject) => htmlTagObjectToString(assetTagObject, this.options.xhtml));
+    const body = assetTags.bodyTags.map((assetTagObject) => htmlTagObjectToString(assetTagObject, this.options.xhtml, this.options.tagDefinitionPreprocessor));
+    const head = assetTags.headTags.map((assetTagObject) => htmlTagObjectToString(assetTagObject, this.options.xhtml, this.options.tagDefinitionPreprocessor));
 
     if (body.length) {
       if (bodyRegExp.test(html)) {
